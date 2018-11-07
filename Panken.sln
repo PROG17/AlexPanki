@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panken", "Panken\Panken.csproj", "{DBBE5EBD-3975-4F39-A9C4-6A8EAE9E0E26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PankTester", "PankTester\PankTester.csproj", "{D384D492-9859-4E3D-8DAA-BCA83906D7E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBBE5EBD-3975-4F39-A9C4-6A8EAE9E0E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBBE5EBD-3975-4F39-A9C4-6A8EAE9E0E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBBE5EBD-3975-4F39-A9C4-6A8EAE9E0E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D384D492-9859-4E3D-8DAA-BCA83906D7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D384D492-9859-4E3D-8DAA-BCA83906D7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D384D492-9859-4E3D-8DAA-BCA83906D7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D384D492-9859-4E3D-8DAA-BCA83906D7E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
