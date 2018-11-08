@@ -1,4 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Customer>
 
+@foreach (var customer in Model)
+{
+<h2>@customer.Name</h2> 
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>AccountId</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in customer.Accounts)
+        {
+
+            <tr>
+                <td>@account.Id</td>
+                <td>@account.Balance</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
