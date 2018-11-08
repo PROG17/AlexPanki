@@ -17,11 +17,15 @@ namespace Panken.Models
         public decimal Balance { get; private set; }
         public Customer Owner { get; set; }
 
-        public void changeBalance(decimal sum)
+        public void Deposit(decimal sum)
         {
             Balance += sum;
         }
-        
-        
+        public void Withraw(decimal sum)
+        {
+            Balance -= sum;
+        }
+
+
     }
 }

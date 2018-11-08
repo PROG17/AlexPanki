@@ -28,5 +28,9 @@ namespace Panken.Repo
         {
             return Accounts;
         }
+        public static Account GetAccount(int id)
+        {
+            return Accounts.SingleOrDefault(x=>x.Id == id);
+        }
     }
 }
