@@ -1,25 +1,29 @@
 ﻿@model List<Customer>
 
-@foreach (var customer in Model)
-{
-<h2>@customer.Name</h2> 
+
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>AccountId</th>
+            <th>Customer id</th>
+            <th>Name</th>
+            <th>Account number</th>
             <th>Balance</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var account in customer.Accounts)
+        @foreach (var customer in Model)
         {
+            @foreach (var account in customer.Accounts)
+            {
 
-            <tr>
-                <td>@account.Id</td>
-                <td>@account.Balance</td>
-            </tr>
+                <tr>
+                    <th>@customer.Id</th>
+                    <th>@customer.Name</th>
+                    <td>@account.Id</td>
+                    <td>@account.Balance</td>
+                </tr>
+            }
         }
     </tbody>
 </table>
-}

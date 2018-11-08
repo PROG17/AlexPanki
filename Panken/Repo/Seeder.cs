@@ -41,7 +41,7 @@ namespace Panken.Repo
               
             };
             var rand = new Random();
-            var accountId = 1;
+            var accountId = 3001;
             foreach (var customer in customers)
             {
                 var numberOfAccounts = rand.Next(1, 4);
