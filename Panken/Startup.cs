@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Panken.Repo;
 
 namespace Panken
 {
@@ -58,6 +59,7 @@ namespace Panken
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            Seeder.SeedBankData();
         }
     }
 }
