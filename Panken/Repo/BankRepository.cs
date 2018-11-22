@@ -18,6 +18,7 @@ namespace Panken.Repo
         public static void AddAccount(Account newAccount)
         {
             Accounts.Add(newAccount);
+           
         }
         public static List<Customer> GetCustomers()
         {

@@ -9,12 +9,17 @@ namespace Panken.Models
 {
     public static class Bank
     {
-        public static void Deposit(TransactionVM transaction)
+        public static bool Deposit(DepositWithrawVM transaction)
         {
             var account = BankRepository.GetAccount(transaction.AccountNumber);
-            account.Deposit(transaction.Amount);
+            if (account != null)
+            {
+                account.Deposit(transaction.Amount);
+                return true;
+            }
+            return false;
         }
-        public static bool Withraw(TransactionVM transaction)
+        public static bool Withraw(DepositWithrawVM transaction)
         {
             var account = BankRepository.GetAccount(transaction.AccountNumber);
             if ((account.Balance - transaction.Amount) > 0)

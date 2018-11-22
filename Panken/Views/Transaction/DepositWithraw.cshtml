@@ -1,0 +1,16 @@
+﻿@using Panken.ViewModels
+@model DepositWithrawVM
+
+@if (ViewBag.Message != null)
+{
+    ViewBag.Message.ToString();
+}
+<form asp-controller="Transaction" asp-action="ProcessForm" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <label>Account number</label>
+    <input type="number" class="form-control" id="accountNumber" placeholder="Enter account number" asp-for="AccountNumber">
+    <label>Amount</label>
+    <input type="number" class="form-control" id="amount" placeholder="Enter amount" asp-for="Amount">
+    <button type="submit" name="deposit" value="deposit">Deposit</button>
+    <button type="submit" name="withraw" value="withraw">Withraw</button>
+</form>

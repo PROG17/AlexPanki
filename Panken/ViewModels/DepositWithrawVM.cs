@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Panken.ViewModels
 {
-    public class TransactionVM
+    public class DepositWithrawVM
     {
         public int AccountNumber { get; set; }
         public decimal Amount { get; set; }

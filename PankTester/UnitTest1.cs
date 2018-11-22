@@ -15,7 +15,7 @@ namespace PankTester
             BankRepository.AddAccount(testAccount);
             var account = BankRepository.GetAccount(1);
             var amountToDeposit = 3000;
-            var transaction = new TransactionVM { AccountNumber = account.Id, Amount = amountToDeposit };
+            var transaction = new DepositWithrawVM { AccountNumber = account.Id, Amount = amountToDeposit };
 
             var expected = account.Balance + amountToDeposit;
 
@@ -33,7 +33,7 @@ namespace PankTester
             BankRepository.AddAccount(testAccount);
             var account = BankRepository.GetAccount(2);
             var amountToWithraw = 2000;
-            var transaction = new TransactionVM { AccountNumber = account.Id, Amount = amountToWithraw };
+            var transaction = new DepositWithrawVM { AccountNumber = account.Id, Amount = amountToWithraw };
 
             var expected = account.Balance - amountToWithraw;
 
@@ -50,7 +50,7 @@ namespace PankTester
             BankRepository.AddAccount(testAccount);
             var account = BankRepository.GetAccount(3);
             var amountToWithraw = 2000;
-            var transaction = new TransactionVM { AccountNumber = account.Id, Amount = amountToWithraw };
+            var transaction = new DepositWithrawVM { AccountNumber = account.Id, Amount = amountToWithraw };
 
             var expected = 1000;
 
