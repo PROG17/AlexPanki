@@ -1,7 +1,6 @@
 ﻿@model List<Customer>
 
 
-
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,16 +13,25 @@
     <tbody>
         @foreach (var customer in Model)
         {
+        <tr>
+            <th>@customer.Id</th>
+            <th>@customer.Name</th>
+            <td></td>
+            <td></td>
+        </tr>
             @foreach (var account in customer.Accounts)
             {
 
-                <tr>
-                    <th>@customer.Id</th>
-                    <th>@customer.Name</th>
-                    <td>@account.Id</td>
-                    <td>@account.Balance</td>
-                </tr>
-            }
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>@account.Id</td>
+                <td>@account.Balance</td>
+            </tr>
+
         }
-    </tbody>
-</table>
+
+        }
+        </tbody>
+    </table>
