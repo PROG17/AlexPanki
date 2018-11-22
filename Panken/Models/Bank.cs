@@ -30,5 +30,9 @@ namespace Panken.Models
             }
             return false;
         }
+        public static bool AccountExists(int accountId)
+        {
+            return BankRepository.GetAccount(accountId) != null;
+        }
     }
 }

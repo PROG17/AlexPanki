@@ -6,7 +6,13 @@
     ViewBag.Message.ToString();
 }
 <form asp-controller="Transaction" asp-action="ProcessForm" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert" style="list-style-type: none">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    }
+
     <label>Account number</label>
     <input type="number" class="form-control" id="accountNumber" placeholder="Enter account number" asp-for="AccountNumber">
     <label>Amount</label>
@@ -14,3 +20,4 @@
     <button type="submit" name="deposit" value="deposit">Deposit</button>
     <button type="submit" name="withraw" value="withraw">Withraw</button>
 </form>
+

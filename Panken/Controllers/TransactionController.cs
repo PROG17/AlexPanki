@@ -22,29 +22,32 @@ namespace Panken.Controllers
                 {
                     if (Bank.Deposit(form))
                     {
-                        ViewBag.Message = "Deposited ";
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Error! We couldnt find the account.");
+                        ModelState.AddModelError(string.Empty, "Error! We couldn't find the account.");
                         
                     }
                 }
                 if (!string.IsNullOrEmpty(withraw))
                 {
-                    if (Bank.Withraw(form))
+                    if (Bank.AccountExists(form.AccountNumber))
                     {
-                        ViewBag.Message = "Withrew ";
-                        return RedirectToAction("Index", "Home");
+                        if (Bank.Withraw(form))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Error! Insufficient funds.");
+
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Error! Insufficient funds or we couldnt find the account.");
-                        
+                        ModelState.AddModelError(string.Empty, "Error! We couldn't find the account.");
                     }
-                    
-                    
                 }
             }
             
