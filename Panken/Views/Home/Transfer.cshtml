@@ -1,0 +1,24 @@
+﻿@using Panken.ViewModels
+@model TransferVM
+
+@if (ViewBag.Message != null)
+{
+    ViewBag.Message.ToString();
+}
+<form asp-controller="Home" method="post">
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert" style="list-style-type: none">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    }
+
+    <label>From Account number</label>
+    <input type="number" class="form-control" id="FromAccountNumber" placeholder="Enter account number" asp-for="FromAccountNumber">
+    <label>To Account number</label>
+    <input type="number" class="form-control" id="FromAccountNumber" placeholder="Enter account number" asp-for="ToAccountNumber">
+    <label>Amount</label>
+    <input type="number" class="form-control" id="amount" placeholder="Enter amount" asp-for="Amount">
+    <button type="submit" name="deposit" value="deposit">Transfer</button>
+  
+</form>
