@@ -55,7 +55,6 @@ namespace PankTester
 
             var expected = account.Balance - amountToWithraw;
 
-
             Bank.Withraw(transaction);
             var actual = BankRepository.GetAccount(2).Balance;
 
@@ -72,11 +71,80 @@ namespace PankTester
 
             var expected = 1000;
 
-
             Bank.Withraw(transaction);
             var actual = BankRepository.GetAccount(3).Balance;
             Assert.Equal(expected, actual);
         }
+
+
+        [Fact]
+        public void VerifyTransferSource()
+        {
+            var testAccount = new Account(7, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount);
+            var testAccount2 = new Account(8, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount2);
+
+            var transfer = new TransferVM
+            {
+                FromAccountNumber = 7,
+                ToAccountNumber = 8,
+                Amount = 1000
+            };
+
+            Bank.Transfer(transfer);
+
+
+            var expected = 0;
+
+            var actual = BankRepository.GetAccount(7).Balance;
+
+
+            Assert.Equal(expected, actual);
+        }
+
+
+        [Fact]
+        public void VerifyTransferDestination()
+        {
+            var testAccount = new Account(9, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount);
+            var testAccount2 = new Account(10, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount2);
+
+            var transfer = new TransferVM
+            {
+                FromAccountNumber = 9,
+                ToAccountNumber = 10,
+                Amount = 1000
+            };
+
+            Bank.Transfer(transfer);
+            var expected = 2000;
+            var actual = BankRepository.GetAccount(10).Balance;
+            Assert.Equal(expected, actual);
+        }
+
+
+        [Fact]
+        public void TransferInsufficiantFunds()
+        {
+            var testAccount = new Account(11, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount);
+            var testAccount2 = new Account(12, new Customer(), 1000);
+            BankRepository.AddAccount(testAccount2);
+
+            var transfer = new TransferVM
+            {
+                FromAccountNumber = 11,
+                ToAccountNumber = 12,
+                Amount = 1001
+            };
+
+            Bank.Transfer(transfer);
+            var expected = 1000;
+            var actual = BankRepository.GetAccount(11).Balance;
+            Assert.Equal(expected, actual);
+        }
     }
-    
 }

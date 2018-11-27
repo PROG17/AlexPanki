@@ -21,6 +21,33 @@ namespace Panken.Controllers
         {
             return View();
         }
+
+        public IActionResult Transfer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Transfer(TransferVM transfer)
+        {
+            if (Bank.AccountExists(transfer.FromAccountNumber) && Bank.AccountExists(transfer.ToAccountNumber))
+            {
+                if (Bank.SufficientFunds(transfer.FromAccountNumber, transfer.Amount))
+                {
+                    Bank.Transfer(transfer);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Error! Insufficient funds.");
+                    return View();
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Error! We couldn't find the account.");
+
+            return View();
+        }
+
         public IActionResult ProcessForm(DepositWithrawVM form, string deposit, string withraw)
         {
             if (ModelState.IsValid)
