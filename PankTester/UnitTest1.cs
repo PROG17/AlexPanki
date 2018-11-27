@@ -8,6 +8,7 @@ namespace PankTester
 {
     public class UnitTest1
     {
+
         [Fact]
         public void VerifyDepositWorks()
         {
@@ -26,6 +27,23 @@ namespace PankTester
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void VerifyInsufficientFundsWorks()
+        {
+            var testAccount = new Account(4, new Customer(), 7000);
+            BankRepository.AddAccount(testAccount);
+            var account = BankRepository.GetAccount(4);
+            var amountToWithraw = 8000;
+            var transaction = new DepositWithrawVM { AccountNumber = account.Id, Amount = amountToWithraw };
+
+            var expected = 7000;
+
+
+            Bank.Withraw(transaction);
+            var actual = BankRepository.GetAccount(4).Balance;
+
+            Assert.Equal(expected, actual);
+        }
         [Fact]
         public void VerifyWithrawWorks()
         {
