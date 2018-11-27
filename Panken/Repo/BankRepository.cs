@@ -18,6 +18,7 @@ namespace Panken.Repo
         public static void AddAccount(Account newAccount)
         {
             Accounts.Add(newAccount);
+           
         }
         public static List<Customer> GetCustomers()
         {
@@ -27,6 +28,10 @@ namespace Panken.Repo
         public static List<Account> GetAccounts()
         {
             return Accounts;
+        }
+        public static Account GetAccount(int id)
+        {
+            return Accounts.SingleOrDefault(x=>x.Id == id);
         }
     }
 }
