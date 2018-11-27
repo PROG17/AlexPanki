@@ -5,7 +5,7 @@
 {
     ViewBag.Message.ToString();
 }
-<form asp-controller="Transaction" asp-action="ProcessForm" method="post">
+<form asp-controller="Home" asp-action="ProcessForm" method="post">
     @if (!ViewData.ModelState.IsValid)
     {
         <div class="alert alert-danger" role="alert" style="list-style-type: none">
@@ -20,4 +20,3 @@
     <button type="submit" name="deposit" value="deposit">Deposit</button>
     <button type="submit" name="withraw" value="withraw">Withraw</button>
 </form>
-

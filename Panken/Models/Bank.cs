@@ -22,7 +22,7 @@ namespace Panken.Models
         public static bool Withraw(DepositWithrawVM transaction)
         {
             var account = BankRepository.GetAccount(transaction.AccountNumber);
-            if ((account.Balance - transaction.Amount) > 0)
+            if ((account.Balance - transaction.Amount) >= 0)
             {
                  account.Withraw(transaction.Amount);
                 return true;
